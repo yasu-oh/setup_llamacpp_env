@@ -34,7 +34,11 @@ git clone https://github.com/ggml-org/llama.cpp
 cd llama.cpp
 mkdir build
 cd build
-cmake ..
+if [ "$1" = "cuda" ]; then
+    cmake .. -DGGML_CUDA=ON
+else
+    cmake ..
+fi
 cmake --build . --config Release
 cd ..
 python -m pip install -r requirements.txt
