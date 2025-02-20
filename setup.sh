@@ -36,10 +36,11 @@ mkdir build
 cd build
 if [ "$1" = "cuda" ]; then
     cmake .. -DGGML_CUDA=ON
+    cmake --build . --config Release -j 8
 else
     cmake ..
+    cmake --build . --config Release
 fi
-cmake --build . --config Release
 cd ..
 python -m pip install -r requirements.txt
 echo export PATH=\${HOME}/llama.cpp/build/bin:\${PATH} >> ${HOME}/.profile
