@@ -37,10 +37,10 @@ mkdir build
 cd build
 if [ "$1" = "cuda" ]; then
     cmake .. -DGGML_CUDA=ON
-    cmake --build . --config Release -j 8
+    cmake --build . --config Release -j 16
 else
     cmake ..
-    cmake --build . --config Release
+    cmake --build . --config Release -j 8
 fi
 cd ..
 python -m pip install -r requirements.txt
