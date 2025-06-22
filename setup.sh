@@ -5,7 +5,7 @@ cd ~
 # apt install
 # ------------------------
 sudo apt update
-sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git git-lfs libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev cmake libcurl4-openssl-dev
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev git-lfs cmake libcurl4-openssl-dev
 sudo apt autoremove -y
 sudo apt clean -y
 git lfs install
@@ -36,11 +36,11 @@ cd llama.cpp
 mkdir build
 cd build
 if [ "$1" = "cuda" ]; then
-    cmake .. -DGGML_CUDA=ON
-    cmake --build . --config Release -j 16
+  cmake .. -DGGML_CUDA=ON
+  cmake --build . --config Release -j 16
 else
-    cmake ..
-    cmake --build . --config Release -j 8
+  cmake ..
+  cmake --build . --config Release -j 8
 fi
 cd ..
 python -m pip install -r requirements.txt
